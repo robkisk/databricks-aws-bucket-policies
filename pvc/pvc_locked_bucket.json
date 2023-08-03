@@ -1,0 +1,69 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": {
+        "AWS": "arn:aws:iam::xxxxxxxx:role/core"
+      },
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/FileStore/tables/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::xxxxxxxx:role/worker"
+      },
+      "Action": [
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::DATABRICKS_ROOT/databricks-logs/SHARD_NAME/log-sync/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/ephemeral/SHARD_NAME/0/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0.meta/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/FileStore/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/FileStore/plots/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/FileStore/profiles/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/mnt/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/tmp/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/tmp/hive/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/user/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/pipelines/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/databricks/mlflow/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/databricks/mlflow-*/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/mlflow-*/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/user/hive/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/user/hive/warehouse/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/user/hive/warehouse/*.db/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/user/hive/warehouse/*__PLACEHOLDER__/",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/user/hive/warehouse/*.db/*__PLACEHOLDER__/"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::xxxxxxxx:role/worker"
+      },
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::DATABRICKS_ROOT",
+        "arn:aws:s3:::DATABRICKS_ROOT/databricks-logs/SHARD_NAME/log-sync/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/ephemeral/SHARD_NAME/0/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0.meta/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0.jobs/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/SHARD_NAME/0/*",
+        "arn:aws:s3:::DATABRICKS_ROOT/customer-logs/*"
+      ]
+    }
+  ]
+}
